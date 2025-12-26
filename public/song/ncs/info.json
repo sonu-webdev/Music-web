@@ -1,4 +1,9 @@
 {
     "title": "Tunes",
-    "description": "This song is for alarm  "
+    "description": "This song is for alarm  ",
+    "songs":[
+        "By Myself.mp3",
+        "Claim to Fame.mp3",
+        "Resolution Or Reflection.mp3"
+    ]
 }
