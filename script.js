@@ -2,9 +2,6 @@ let songs = [];
 let currFolder = "";
 let currentSong = new Audio();
 
-/* =========================
-   LOAD SONGS FROM info.json
-   ========================= */
 async function getSongs(folder) {
   currFolder = folder;
 
@@ -32,7 +29,33 @@ async function getSongs(folder) {
       </li>
     `;
   });
+  async function loadPlaylists() {
+  const res = await fetch("/song/playlists.json");
+  const playlists = await res.json();
 
+  const container = document.querySelector(".songs-container");
+  container.innerHTML = "";
+
+  playlists.forEach(pl => {
+    container.innerHTML += `
+      <div class="song-card" data-folder="${pl.folder}">
+        <img src="/song/${pl.folder}/${pl.cover}"
+             onerror="this.src='/svg/music.svg'">
+        <h3>${pl.title}</h3>
+        <p>${pl.description}</p>
+      </div>
+    `;
+  });
+
+  document.querySelectorAll(".song-card").forEach(card => {
+    card.addEventListener("click", async () => {
+      await getSongs(`song/${card.dataset.folder}`);
+      playMusic(songs[0]);
+    });
+  });
+}
+
+loadPlaylists(  )
   Array.from(songUl.children).forEach((li, index) => {
     li.addEventListener("click", () => {
       playMusic(songs[index]);
@@ -40,9 +63,9 @@ async function getSongs(folder) {
   });
 }
 
-/* =========================
-   PLAY MUSIC
-   ========================= */
+
+
+
 function playMusic(track) {
   currentSong.src = `/${currFolder}/${track}`;
   currentSong.play();
@@ -51,9 +74,9 @@ function playMusic(track) {
   document.querySelector(".song-info").innerText = track;
 }
 
-/* =========================
-   TIME FORMAT
-   ========================= */
+
+  //  time
+  
 function secondsToTime(seconds) {
   if (isNaN(seconds)) return "00:00";
   let m = Math.floor(seconds / 60);
@@ -61,11 +84,8 @@ function secondsToTime(seconds) {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
-/* =========================
-   MAIN
-   ========================= */
+
 async function main() {
-  // default playlist
   await getSongs("song/aujla");
 
   if (songs.length > 0) {
@@ -73,7 +93,7 @@ async function main() {
     currentSong.pause();
   }
 
-  /* PLAY / PAUSE */
+  // play , pause
   document.getElementById("play").addEventListener("click", () => {
     if (currentSong.paused) {
       currentSong.play();
@@ -93,27 +113,27 @@ async function main() {
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
   });
 
-  /* SEEK BAR */
+  // seekbar
   document.querySelector(".seekbar").addEventListener("click", (e) => {
     const percent = e.offsetX / e.target.clientWidth;
     currentSong.currentTime = currentSong.duration * percent;
   });
 
-  /* NEXT */
+  // next
   document.getElementById("next").addEventListener("click", () => {
     let index = songs.indexOf(currentSong.src.split("/").pop());
     index = (index + 1) % songs.length;
     playMusic(songs[index]);
   });
 
-  /* PREVIOUS */
+  // previous
   document.getElementById("previous").addEventListener("click", () => {
     let index = songs.indexOf(currentSong.src.split("/").pop());
     index = (index - 1 + songs.length) % songs.length;
     playMusic(songs[index]);
   });
 
-  /* VOLUME */
+//  previous
   document.querySelector(".range input").addEventListener("input", (e) => {
     currentSong.volume = e.target.value / 100;
   });

@@ -1,0 +1,26 @@
+[
+  {
+    "folder": "aujla",
+    "title": "Karan Aujla",
+    "description": "Punjabi hits",
+    "cover": "cover.jpg"
+  },
+  {
+    "folder": "chema Y",
+    "title": "Cheema Y",
+    "description": "My collection",
+    "cover": "cover.jpg"
+  },
+  {
+    "folder": "lana del ray",
+    "title": "Lana Del Ray",
+    "description": "Top tracks",
+    "cover": "cover.jpg"
+  },
+  {
+    "folder": "ncs",
+    "title": "NCS",
+    "description": "No Copyright Sounds",
+    "cover": "cover.jpg"
+  }
+]
