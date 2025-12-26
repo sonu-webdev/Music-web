@@ -24,14 +24,14 @@ async function getsongs(folder) {
     songul.innerHTML = "";
 
     for (const song of songs) {
-        songul.innerHTML = songul.innerHTML + `  <li><img src="music.svg" alt="" class="invert">
+        songul.innerHTML = songul.innerHTML + `  <li><img src="/svg/music.svg" alt="" class="invert">
             <div class="info">
               <div>${song.replaceAll("%20", " ").replaceAll("%5", "").replaceAll("CsongC", "").replaceAll("C    ulture.mp3", "")}</div>
               <div>Sonu</div>
             </div>
             <div class="playnow">
               <div>Play Now</div>
-              <img src="play.svg" alt="" class="invert">
+              <img src="/svg/play.svg" alt="" class="invert">
             </div></li>  `;
     }
 
@@ -63,7 +63,7 @@ let playmusic = (track) => {
     let cleanTrack = track.replaceAll("\\", "").replaceAll("%5C", "");
 
     currentSong.src = `http://127.0.0.1:3002/${currfolder}/` + cleanTrack;
-    play.src = "pause.svg";
+    play.src = "/svg/pause.svg";
     currentSong.play();
 
     document.querySelector(".song-info").innerHTML = decodeURI(cleanTrack);
@@ -105,7 +105,7 @@ async function displayAlbum() {
             } catch (error) {
                 // Create a card even without info.json
                 cardContainer.innerHTML = cardContainer.innerHTML + ` <div data-folder="${folder}" class="song-card">
-                  <img src="song/${folder}/cover.jpg" alt="" onerror="this.src='music.svg'">
+                  <img src="song/${folder}/cover.jpg" alt="" onerror="this.src='/svg/music.svg'">
                   <h3 class="song-title">${folder.charAt(0).toUpperCase() + folder.slice(1)}</h3>
                   <p class="song-subtitle">Music Playlist</p>
                 </div>`;
@@ -144,11 +144,11 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentSong.paused) {
             currentSong.play()
-            play.src = "pause.svg"
+            play.src = "/svg/pause.svg"
         }
         else {
             currentSong.pause()
-            play.src = "play.svg"
+            play.src = "/svg/play.svg"
         }
     })
 
@@ -223,19 +223,19 @@ async function main() {
         currentSong.volume = parseInt(e.target.value) / 100;
         if (currentSong.volume > 0) {
 
-            document.querySelector(".volume img").src = document.querySelector(".volume img").src.replace("mute.svg", "volume.svg")
+            document.querySelector(".volume img").src = document.querySelector(".volume img").src.replace("/mute.svg", "/volume.svg")
         }
     })
     // add a event listener for the mute
     document.querySelector(".volume img").addEventListener('click', e => {
-        if (e.target.src.includes("volume.svg")) {
-            e.target.src = e.target.src.replace("volume.svg", "mute.svg")
+        if (e.target.src.includes("/svg/volume.svg")) {
+            e.target.src = e.target.src.replace("/svg/volume.svg", "/svg/mute.svg")
             currentSong.volume = 0;
             document.querySelector(".range").getElementsByTagName("input")[0].value = 0
 
         }
         else {
-            e.target.src = e.target.src.replace("mute.svg", "volume.svg")
+            e.target.src = e.target.src.replace("/svg/mute.svg", "/svg/volume.svg")
 
             document.querySelector(".range").getElementsByTagName("input")[0].value = 30
             currentSong.volume = 0.30;
