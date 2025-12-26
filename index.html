@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music App Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <ul class="header-nav">
+      <li class="brand-logo">
+        <img src="logo.svg" alt="logo" class="header-icon logo invert" />
+      </li>
+      <li>
+        <img src="home.svg" alt="home" class="header-icon invert" />
+      </li>
+      <!-- <li class="sec-li">
+        <input type="search" class="search-bar" placeholder="What do you want to play?" />
+      </li> -->
+    </ul>
+    <!-- <div class="someware"> -->
+    <ul class="nav-links">
+      <li>Premium</li>
+      <li>Support</li>
+      <li>Download</li>
+      <li style="width: 15px">|</li>
+    </ul>
+
+    <ul class="auth-links nav-links">
+      <li>Install App</li>
+      <li>Sign Up</li>
+      <li class="login">Login</li>
+    </ul>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <div class="sidebar app-card">
+      <div class="library-header">
+        <h1>Your Library</h1>
+        <span>&#43;</span>
+      </div>
+      <div class="songlist">
+        <ul>
+        </ul>
+      </div>
+      <div class="library-content">
+        <!-- <section class="library-section">
+          <div class="playlist-info">
+            <span>
+              <h3>Create your first playlist</h3>
+            </span>
+            <span>It's easy, we'll help you</span>
+          </div>
+          <span><button class="library-button">Create Playlist</button></span> -->
+        <!-- </section>
+
+        <section class="library-section">
+          <div class="playlist-info">
+            <span>
+              <h3>Let's find some podcasts to follow</h3>
+            </span>
+            <span>We'll keep you updated on new episodes</span>
+          </div>
+          <span><button class="library-button">Browse podcasts</button></span>
+        </section> -->
+
+        <footer class="footer-links">
+          <span>Legal</span>
+          <span>Safety & Privacy Center</span>
+          <span>Privacy Policy</span>
+          <span>Cookie</span>
+          <span>About Ads</span>
+          <span>Accessibility</span>
+          <span>Cookies</span>
+        </footer>
+
+        <button class="language-button">English</button>
+      </div>
+    </div>
+
+    <div class="main-content app-card">
+      <div class="extra">
+        <img class="hamburger invert" src="hambuger.svg" alt="">
+        <img class=" cross invert" src="cross.svg" alt="">
+      </div>
+      <h1 class="content-header">Trending Songs</h1>
+      <div class="songs-container">
+      </div>
+      <div class="play">
+        <div class="seekbar">
+          <div class="seek-circle">
+
+          </div>
+        </div>
+        <div class="above-bar">
+
+          <div class="song-info"> </div>
+          <div class="song-btn">
+            <img src="previous.svg" alt="" id="previous">
+            <img id="play" src="play.svg" alt="">
+            <img src="next.svg" alt="" id="next">
+          </div>
+          <div class="time-volume">
+            <div class="song-time"></div>
+            <div class="volume">
+              <img src="volume.svg" alt="">
+              <div class="range">
+                <input type="range" name="volume">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
